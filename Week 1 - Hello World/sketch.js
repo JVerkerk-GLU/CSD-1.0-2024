@@ -6,7 +6,7 @@ function setup() {
 }
 
 function draw() {
-  background(196, 255, 196);
+  background(196);
 
   //#region 1. Name
   fill(0);
@@ -293,4 +293,5 @@ function draw() {
     rect(460, 292, 8, 16);
     fill(128, 128, 255);
     rect(468, 292, 8, 16);
+    //#endregion
 }
