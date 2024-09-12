@@ -28,7 +28,14 @@ let cloudSpeed = [];
 let cloudY = [96, 128, 160];
 let cloudX = [WINDOW_WIDTH * 0.2, WINDOW_WIDTH * 0.4, WINDOW_WIDTH * 0.75];
 
-let stopLight = 0;
+let trafficLight = 0;
+
+const CAR_Y_ROW = [WINDOW_HEIGHT - 48, WINDOW_HEIGHT - 20];
+const CAR_SPEED_ROW = [4, 2];
+const CAR_SPAWN_MIN = 64;
+const CAR_SPAWN_MAX = 128;
+let car = [];
+let carCountdown = CAR_SPAWN_MIN;
 
 function setup() {
   createCanvas(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -46,6 +53,13 @@ function setup() {
     cloudX[i] = random(WINDOW_MIN, WINDOW_MAX);
     cloudSpeed[i] = random(CLOUD_MIN_SPEED, CLOUD_MAX_SPEED);
   }
+  car = [
+    {
+      x: random(WINDOW_MIN, WINDOW_MAX),
+      row: int(random(CAR_Y_ROW.length)),
+      hue: random(360)
+    }
+  ]
 }
 
 function draw() {
@@ -58,7 +72,7 @@ function draw() {
   //#region Sky
   background(lerpColor(nightSky, daySky, dayBrightness));
   stroke(255, 255, 0, 255 - (dayBrightness * 255));
-  strokeWeight(2);
+  strokeWeight(4);
   for (let i = 0; i < STAR_COUNT; i++) {
     point(starPos[i].x, starPos[i].y);
   }
@@ -85,7 +99,6 @@ function draw() {
     fill(nightSky);
     circle(sunX + (SUN_SIZE * 0.5), SUN_HEIGHT, SUN_SIZE);
   }
-
 
   //#region Clouds
   for (let i = 0; i < CLOUD_COUNT; i++) {
@@ -145,34 +158,94 @@ function draw() {
     circle(x - sin(frameCount * 0.1) * 4, WINDOW_HEIGHT - 192, 32);
     fill(0, 8 + (48 * dayBrightness), 0);
     circle(x - 4 - cos(frameCount * 0.1) * 4, WINDOW_HEIGHT - 196, 32);
+  }
 
-    //#region Traffic Light
-    stopLight = floor(frameCount / 300) % 3;
+  //#region Traffic Light
+  stroke(48);
+  const tlX = WINDOW_WIDTH - 128;
+  strokeWeight(8);
+  line(tlX, WINDOW_HEIGHT - 56, tlX, WINDOW_HEIGHT - 128);
+  noStroke();
+  fill(48);
+  rect(tlX - 16, WINDOW_HEIGHT - 222, 32, 96);
+  if (trafficLight == 0) {
+    fill(255, 0, 0);
+  } else {
+    fill(64, 0, 0);
+  }
+  circle(tlX, WINDOW_HEIGHT - 206, 12);
+  if (trafficLight == 2) {
+    fill(255, 64, 0);
+  } else {
+    fill(64, 32, 0);
+  }
+  circle(tlX, WINDOW_HEIGHT - 176, 12);
+  if (trafficLight == 1) {
+    fill(0, 255, 0);
+  } else {
+    fill(0, 64, 0);
+  }
+  circle(tlX, WINDOW_HEIGHT - 144, 12);
 
-    stroke(48);
-    const tlX = WINDOW_WIDTH - 128;
-    strokeWeight(8);
-    line(tlX, WINDOW_HEIGHT - 56, tlX, WINDOW_HEIGHT - 128);
+  
+  //#region Car
+  car.sort(c => c.row);
+  for(let i = 0; i < car.length; i++) {
+    if (trafficLight > 0) {
+      car[i].x += CAR_SPEED_ROW[car[i].row] / trafficLight;
+      if (car[i].x > WINDOW_MAX) {
+        car.splice(i, 1);
+        i--;
+        continue;
+      }
+    }
+
+    let x = car[i].x;
+    let y = CAR_Y_ROW[car[i].row];
     noStroke();
-    fill(48);
-    rect(tlX - 16, WINDOW_HEIGHT - 222, 32, 96);
-    if (stopLight == 0) {
-      fill(255, 0, 0);
-    } else {
-      fill(64, 0, 0);
+    colorMode(HSL, 360, 255, 255);
+    fill(car[i].hue, 255, 64 + 32 * dayBrightness);
+    rect(x - 52, y - 32, 104, 32);
+    triangle(x - 52, y - 32, x + 52, y - 32, x - 48, y - 64);
+    triangle(x - 48, y - 64, x + 32, y - 32, x + 28, y - 64);
+    colorMode(RGB);
+
+    fill(48 + 16 * dayBrightness);
+    circle(x - 32, y, 16);
+    circle(x + 32, y, 16);
+  }
+
+  if (trafficLight > 0)
+  {
+    carCountdown--;
+    if (carCountdown <= 0) {
+      carCountdown = random(CAR_SPAWN_MIN, CAR_SPAWN_MAX);
+      car.push(
+        {
+          x: WINDOW_MIN,
+          row: int(random(CAR_Y_ROW.length)),
+          hue: random(360)
+        }
+      )
     }
-    circle(tlX, WINDOW_HEIGHT - 206, 12);
-    if (stopLight == 2) {
-      fill(255, 64, 0);
-    } else {
-      fill(64, 32, 0);
-    }
-    circle(tlX, WINDOW_HEIGHT - 176, 12);
-    if (stopLight == 1) {
-      fill(0, 255, 0);
-    } else {
-      fill(0, 64, 0);
-    }
-    circle(tlX, WINDOW_HEIGHT - 144, 12);
+  }
+
+  //#region Foreground Tree
+  fill(41 + (41 * dayBrightness), 26 + (26 * dayBrightness), 16 + (16 * dayBrightness));
+  rect(300, WINDOW_HEIGHT - 96, 16, 140);
+  fill(0, 48 + (48 * dayBrightness), 0);
+  circle(308 + cos(frameCount * 0.1) * 4, WINDOW_HEIGHT - 96, 32);
+  fill(0, 32 + (48 * dayBrightness), 0);
+  circle(304 + sin(frameCount * 0.1) * 4, WINDOW_HEIGHT - 92, 32);
+  fill(0, 16 + (48 * dayBrightness), 0);
+  circle(300 - sin(frameCount * 0.1) * 4, WINDOW_HEIGHT - 88, 32);
+  fill(0, 8 + (48 * dayBrightness), 0);
+  circle(296 - cos(frameCount * 0.1) * 4, WINDOW_HEIGHT - 84, 32);
+}
+
+function keyPressed() {
+  if (keyCode == ENTER) {
+    trafficLight++;
+    trafficLight %= 3;
   }
 }
