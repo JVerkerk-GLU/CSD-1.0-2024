@@ -11,5 +11,6 @@ Aan het einde van de module is er een ontwikkelweek waarin je reflecteert op je 
 
 ## Week Opdrachten
 
-<a href="/Week%201%20-%20Hello%20World/README.md"><img alt="Week 1 - Hello World" src="https://img.shields.io/badge/Hello%20World%20-%20empty?style=for-the-badge&label=Week%201&color=%23FDD800"></picture></a>
+<a href="/Week%201%20-%20Hello%20World/README.md"><img alt="Week 1 - Hello World" src="https://img.shields.io/badge/Hello%20World%20-%20empty?style=for-the-badge&label=Week%201&color=%23FDD800"></picture></a><br>
+<a href="/Week%202%20-%20Dynamisch%20Landschap/README.md"><img alt="Week 1 - Hello World" src="https://img.shields.io/badge/Dynamisch%20Landschap%20-%20empty?style=for-the-badge&label=Week%202&color=%23FDD800"></picture></a>
 <br>
