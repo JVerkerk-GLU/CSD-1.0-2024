@@ -8,7 +8,7 @@
 Maak een animerend landschap waarin een auto afhankelijk van een verkeerslicht van links naar rechts beweegt. Een wolk en een zon bewegen continu over het scherm, met bergen en bomen op de achtergrond.
 
 ## Voorbeeld
-<picture><img alt="Engine" src="preview.gif"></picture>
+<picture><img alt="Preview" src="preview.gif"></picture>
 
 ## Specificaties
 Gebruik waar mogelijk variabelen. Canvas van minimaal 800 x 600 pixels

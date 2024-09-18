@@ -6,6 +6,9 @@
 
 **Opdracht:** Gebruik de tekenfuncties van p5.js om de afbeelding volgens de specificaties hieronder na te tekenen.
 
+## Voorbeeld
+<picture><img alt="Preview" src="preview.png"></picture>
+
 ## Specificaties
 Teken de volgende onderdelen naar de canvas, geef hierbij duidelijk aan welke opdracht je hebt weer gegeven door het nummer van de opdracht er bij te zetten.
 
@@ -17,6 +20,3 @@ Teken de volgende onderdelen naar de canvas, geef hierbij duidelijk aan welke op
 6. Een dobbelsteen met een solide buiten rand
 7. Pixel-art Mario, inclusief de naam
 8. (bonus) Een ander game-figuur, inclusief de naam
-
-## Voorbeeld
-<picture><img alt="Engine" src="preview.png"></picture>
