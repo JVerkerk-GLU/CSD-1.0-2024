@@ -25,14 +25,7 @@ let victor = -1;
 function gameSetup() {
   // Reset Grid
   cellSize = (PANEL_SIZE - BORDER_SIZE) / gridSize;
-  grid = [];
-  for(let iy = 0; iy < gridSize; iy++) {
-    let row = [];
-    for(let ix = 0; ix < gridSize; ix++) {
-      row.push(-1);
-    }
-    grid.push(row);
-  }
+  grid = Array.from({ length: gridSize }, () => Array(gridSize).fill(-1));
   // Set current player to the player that lost in the last match
   playerIndex = (victor + 1) % 2;
   targetBgX[0] = targetBgX[1] = 0.75 - playerIndex * 0.5;
