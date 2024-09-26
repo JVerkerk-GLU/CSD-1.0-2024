@@ -1,4 +1,4 @@
-# Hello World
+# Generatieve Kunst
 <picture><img alt="Periode 1, Week 4" src="https://img.shields.io/badge/Week%204%20-%20empty?style=for-the-badge&label=Periode%201&color=%231C69F0"></picture>
 <br>
 <picture><img alt="Engine" src="https://img.shields.io/badge/P5.JS%20-%20empty?style=for-the-badge&logo=javascript&logoColor=%23ffffff&color=%23ED225D"></picture>
