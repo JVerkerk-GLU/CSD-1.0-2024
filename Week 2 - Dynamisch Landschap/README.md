@@ -1,4 +1,4 @@
-# Hello World
+# Dynamisch Landschap
 <picture><img alt="Periode 1, Week 2" src="https://img.shields.io/badge/Week%202%20-%20empty?style=for-the-badge&label=Periode%201&color=%231C69F0"></picture>
 <br>
 <picture><img alt="Engine" src="https://img.shields.io/badge/P5.JS%20-%20empty?style=for-the-badge&logo=javascript&logoColor=%23ffffff&color=%23ED225D"></picture>
@@ -19,7 +19,7 @@ Gebruik waar mogelijk variabelen. Canvas van minimaal 800 x 600 pixels
 **Zon:**
 - Beweegt van links naar rechts en herhaalt zich.
 
-**Bergen en bomen:**E
+**Bergen en bomen:**
 - Statische bergen en bomen.
 - Één van de bomen staat dichterbij dan de auto.
 
