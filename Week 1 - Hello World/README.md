@@ -7,7 +7,7 @@
 **Opdracht:** Gebruik de tekenfuncties van p5.js om de afbeelding volgens de specificaties hieronder na te tekenen.
 
 ## Voorbeeld
-<picture><img alt="Engine" src="preview.png"></picture>
+<picture><img alt="Preview" src="preview.png"></picture>
 
 ## Specificaties
 Teken de volgende onderdelen naar de canvas, geef hierbij duidelijk aan welke opdracht je hebt weer gegeven door het nummer van de opdracht er bij te zetten.

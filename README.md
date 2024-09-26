@@ -11,5 +11,8 @@ Aan het einde van de module is er een ontwikkelweek waarin je reflecteert op je 
 
 ## Week Opdrachten
 
-<a href="/Week%201%20-%20Hello%20World/README.md"><img alt="Week 1 - Hello World" src="https://img.shields.io/badge/Hello%20World%20-%20empty?style=for-the-badge&label=Week%201&color=%23FDD800"></picture></a>
-<br>
+<a href="/Week%201%20-%20Hello%20World/README.md"><img alt="Week 1 - Hello World" src="https://img.shields.io/badge/Hello%20World%20-%20empty?style=for-the-badge&label=Week%201&color=%23FDD800"></picture></a><br>
+<a href="/Week%202%20-%20Dynamisch%20Landschap/README.md"><img alt="Week 2 - Dynamisch Landschap" src="https://img.shields.io/badge/Dynamisch%20Landschap%20-%20empty?style=for-the-badge&label=Week%202&color=%23FDD800"></picture></a><br>
+<a href="/Week%203%20-%20Boter%2C%20Kaas%20en%20Eieren/README.md"><img alt="Week 3 - Boter, Kaas en Eieren" src="https://img.shields.io/badge/Boter%2C%20Kaas%20en%20Eieren-%20empty?style=for-the-badge&label=Week%203&color=%23FDD800"></picture></a><br>
+<a href="/Week%204%20-%20Generatieve%20Kunst/README.md"><img alt="Week 4 - Generatieve Kunst" src="https://img.shields.io/badge/Generatieve%20Kunst-%20empty?style=for-the-badge&label=Week%204&color=%23FDD800"></picture></a><br>
+<a href="/Week%205%20-%20Pixelart%20met%202D%20Array/README.md"><img alt="Week 5 - Pixelart met 2D Array" src="https://img.shields.io/badge/Pixelart%20met%202D%20Array-%20empty?style=for-the-badge&label=Week%205&color=%23FDD800"></picture></a><br>
