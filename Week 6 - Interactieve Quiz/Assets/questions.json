@@ -1,0 +1,102 @@
+[
+    {
+        "question": "Which of these is NOT a class in Dungeons & Dragons 5th edition?",
+        "answers": [
+            "Druid",
+            "Magus",
+            "Barbarian",
+            "Rogue"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "In what year did Dungeons & Dragons get acquired by Wizards of the Coast?",
+        "answers": [
+            "1991",
+            "1994",
+            "1997",
+            "2000"
+        ],
+        "correct": 3
+    },
+    {
+        "question": "Which of these cities is not part of the Faerûn?",
+        "answers": [
+            "Baldur's Gate",
+            "Neverwinter",
+            "Thultanthar",
+            "Sigil"
+        ],
+        "correct": 4
+    },
+    {
+        "question": "What was the first fictional setting for Dungeons & Dragons?",
+        "answers": [
+            "Forgotten Realms",
+            "Spelljammer",
+            "Greyhawk",
+            "Blackmoor"
+        ],
+        "correct": 4
+    },
+    {
+        "question": "In the Forgotten Realms, which of these creatures would be seen as the Handmaidens of Lolth?",
+        "answers": [
+            "Yugoloth",
+            "Yochlol",
+            "Drider",
+            "Succubi"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "Which of these deities was destroyed by Helm during the time of Troubles?",
+        "answers": [
+            "Bhaal",
+            "Asmodeus",
+            "Mask",
+            "Mystra"
+        ],
+        "correct": 4
+    },
+    {
+        "question": "What school of magic is the 5th level spell Creation?",
+        "answers": [
+            "Illusion",
+            "Conjuration",
+            "Transmutation",
+            "Abjuration"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "In Vecna Lives, who of these mages was killed?",
+        "answers": [
+            "Bigby",
+            "Mordenkainen",
+            "Leomund",
+            "Tasha"
+        ],
+        "correct": 1
+    },
+    {
+        "question": "In 5th edition, how many attacks can a 20th level fighter make while they use 2 weapons, are hasted and use action surge.",
+        "answers": [
+            "9",
+            "10",
+            "11",
+            "12"
+        ],
+        "correct": 2
+    },
+    {
+        "question": "In the Dungeons & Dragons movie, the heroes must run from a dragon, what is the name of this draggon?",
+        "answers": [
+            "Themberchaud",
+            "Umbralax",
+            "Razorfang",
+            "Arngalor"
+        ],
+        "correct": 1
+    }
+]
