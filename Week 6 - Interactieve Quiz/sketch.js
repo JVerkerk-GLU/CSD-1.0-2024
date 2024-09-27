@@ -6,19 +6,41 @@ const BUTTON_LAYOUT = [
 ]
 
 let dungeon_bg;
-let panel_default, panel_selected, panel_correct, panel_fault;
+let panel_default, panel_answer, panel_answer_border, panel_correct, panel_fault;
+let char_player;
+let char_enemy = [];
+let ui_health;
 
-let questions;
-let currentQuestion = 0;
+let level = 0;
+const MAX_LEVEL = 1;
+let health;
+const MAX_HEALTH = 3;
+let enemyHealth;
+const MAX_ENEMY_HEALTH = 5;
+let questions = [];
+let currentQuestion = 9;
+let currentAnswer = -1;
+let MAX_REVEAL_COUNTDOWN = 3;
+let revealCountdown = 0;
 
 function preload() {
-  questions = loadJSON('Assets/questions.json');
+  for (let i = 1; i <= 1; i++) {
+    let array = loadJSON(`Assets/questions_${i}.json`);
+    console.log(array);
+    questions.push(array);
+  }
+  console.log(questions);
   dungeon_bg = loadImage("Assets/dungeon_bg.png");
   panel_question = loadImage("Assets/panel_question.png");
-  panel_default = loadImage("Assets/panel_default.png");
-  panel_selected = loadImage("Assets/panel_select.png");
-  panel_correct = loadImage("Assets/panel_correct.png");
-  panel_fault = loadImage("Assets/panel_fault.png");
+  panel_answer = loadImage("Assets/panel_answer.png");
+  panel_answer_border = loadImage("Assets/panel_answer_border.png");
+
+  char_player = loadImage("Assets/player.png");
+  for (let i = 1; i <= 5; i++) {
+    char_enemy.push(loadImage(`Assets/enemy_${i}.png`));
+  }
+
+  ui_health = loadImage("Assets/health.png");
 }
 
 function setup() {
@@ -27,6 +49,9 @@ function setup() {
   textAlign(CENTER, CENTER);
   textSize(32);
   textWrap(WORD);
+
+  StartGame();
+  LoadQuestion();
 }
 
 function draw() {
@@ -34,52 +59,79 @@ function draw() {
   drawBackground();
 
   fill(255);
-  drawPanel(panel_question, 24, 240, 752, 158, 48);
+  nineSlice(panel_question, 24, 240, 752, 158, 48);
   fill(0);
   textStyle(BOLD);
-  text(questions[currentQuestion].question, 24, 240, 752, 158);
+  text(questions[level][currentQuestion].question, 24, 240, 752, 158);
 
   for (let i = 0; i < 4; i++) {
     fill(255);
     textStyle(NORMAL);
-    drawButton(questions[currentQuestion].answers[i], BUTTON_LAYOUT[i]);
+    let c = color(255, 255, 255);
+    if (currentAnswer === i) {
+      c = color(196, 196, 255);
+    }
+    drawButton(questions[level][currentQuestion].answers[i], BUTTON_LAYOUT[i], c);
   }
 }
 
-function startQuiz() {
-  currentQuestion = 0;
+function StartGame() {
+  health = MAX_HEALTH;
+  enemyHealth = MAX_ENEMY_HEALTH;
+  level = 0;
+  questions[level] = shuffle(questions[level]);
+  currentQuestion = -1;
+}
+
+function LoadQuestion() {
+  currentQuestion++;
+  if (currentQuestion >= questions[level].length) {
+    level++;
+    questions = 0;
+    questions[level] = shuffle(questions[level]);
+  }
+  currentAnswer = -1;
 }
 
 function drawBackground() {
   fill(255);
-  for (let i = 0; i < width; i += 40)
-  image(dungeon_bg, i, 0, 40, 200);
+  for (let i = 0; i < width; i += 40) {
+    image(dungeon_bg, i, 0, 40, 200);
+  }
+  
+  for (i = 0; i < MAX_HEALTH; i++) {
+    image(ui_health, width * 0.35 - (32 * i), 96 + (i < health ? 2 : 0) * sin((frameCount + i * 10) / 5), 32, 32, (i < health ? 0 : 32), 0, 32, 32);
+  }
+
+  for (i = 0; i < MAX_ENEMY_HEALTH; i++) {
+    image(ui_health, width * 0.7 + (32 * i), 96 + (i < enemyHealth ? 2 : 0) * sin((frameCount + i * 10) / 5), 32, 32, (i < enemyHealth ? 0 : 32), 0, 32, 32);
+  }
+  
+  character(char_player, width * 0.4, 64, floor(frameCount / 30) % 2);
+  character(char_enemy[0], width * 0.6, 64, floor(frameCount / 30) % 2);
 }
 
-function drawButton(value, loc) {
-  fill(255);
-  drawPanel(panel_default, loc.x1, loc.y1, loc.x2, loc.y2);
+function drawButton(value, loc, color) {
+  tint(color);
+  nineSlice(panel_answer, loc.x1, loc.y1, loc.x2, loc.y2, 48);
 
   fill(0);
   text(value, loc.x1, loc.y1, loc.x2, loc.y2);
-
+  tint(255);
   if (mouseX > loc.x1 && mouseX < loc.x1 + loc.x2 && mouseY > loc.y1 && mouseY < loc.y1 + loc.y2) {
-    fill(0, 64);
-    rect(loc.x1, loc.y1, loc.x2, loc.y2);
+    tint(0, 0, 255, 64);
   }
+  nineSlice(panel_answer_border, loc.x1, loc.y1, loc.x2, loc.y2, 48);
+  tint(255)
 }
 
-function drawPanel(panel, x1, y1, x2, y2, size = 64) {
-    // Corners
-    image(panel, x1, y1, 20, 20, 0, 0, 20, 20);
-    image(panel, x1 + x2 - 20, y1, 20, 20, size - 20, 0, 20, 20);
-    image(panel, x1, y1 + y2 - 20, 20, 20, 0, size - 20, 20, 20);
-    image(panel, x1 + x2 - 20, y1 + y2 - 20, 20, 20, size - 20, size - 20, 20, 20);
-    // Sides
-    image(panel, x1 + 20, y1, x2 - 40, 20, 20, 0, size - 40, 20);
-    image(panel, x1 + 20, y1 + y2 - 20, x2 - 40, 20, 20, size - 20, size - 40, 20);
-    image(panel, x1, y1 + 20, 20, y2 - 40, 0, 20, 20, size - 40);
-    image(panel, x1 + x2 - 20, y1 + 20, 20, y2 - 40, size - 20, 20, 20, size - 40);
-    // Fill
-    image(panel, x1 + 20, y1 + 20, x2 - 40, y2 - 40, 20, 20, size - 40, size - 40);
+function mouseClicked() {
+  if (currentAnswer === -1) {
+    for(let i = 0; i < 4; i++) {
+      if (mouseX > BUTTON_LAYOUT[i].x1 && mouseX < BUTTON_LAYOUT[i].x1 + BUTTON_LAYOUT[i].x2 &&
+        mouseY > BUTTON_LAYOUT[i].y1 && mouseY < BUTTON_LAYOUT[i].y1 + BUTTON_LAYOUT[i].y2) {
+          currentAnswer = i;
+      }
+    }
+  }
 }

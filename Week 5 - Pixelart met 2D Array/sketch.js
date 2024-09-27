@@ -65,7 +65,7 @@ function drawArt()
   for (let y = 0; y < art[currentArt].length; y++) {
     for (let x = 0; x < art[currentArt][y].length; x++) {
       fill(art[currentArt][y][x]);
-      rect(x * C_WIDTH, y * C_HEIGHT, C_WIDTH, C_HEIGHT);
+      ellipse(x * C_WIDTH, y * C_HEIGHT, C_WIDTH, C_HEIGHT);
     }
   }
 }
