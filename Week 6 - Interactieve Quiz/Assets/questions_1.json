@@ -1,4 +1,6 @@
-[
+{
+    "level": 1,
+    "questions": [
     {
         "question": "Which of these is NOT a class in Dungeons & Dragons 5th edition?",
         "answers": [
@@ -100,3 +102,4 @@
         "correct": 1
     }
 ]
+}

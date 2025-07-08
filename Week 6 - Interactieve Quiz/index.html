@@ -4,17 +4,25 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Week 1 - Hello World</title>
+    <title>Week 6 - Interactieve Quiz</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/../style.css">
 
     <script src="/../libraries/p5.min.js"></script>
     <script src="/../libraries/p5.sound.min.js"></script>
+    <script src="Utils/tile.js"></script>
+    <script src="Utils/state.js"></script>
   </head>
   
   <body>
+    <!-- States -->
+    <script src="States/init.js"></script>
+    <script src="States/start-round.js"></script>
+    <script src="States/gamplay.js"></script>
+    <script src="States/result.js"></script>
+
+    <!-- Main Entry Point-->
     <script src="sketch.js"></script>
-    <script src="Utils/tile.js"></script>
   </body>
 </html>
