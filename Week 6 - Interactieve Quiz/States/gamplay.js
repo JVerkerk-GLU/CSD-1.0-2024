@@ -15,17 +15,22 @@ function onGameplay() {
     drawButton(questions[currentQuestion].answers[i], BUTTON_LAYOUT[i], c);
   }
 
-  character(char_player, width * 0.4, 64, floor(frameCount / 30) % 2);
-  character(char_enemy[0], width * 0.6, 64, floor(frameCount / 30) % 2);
+  drawPlayer(width * pX, 64, floor(frameCount / 30) % 2);
+  drawEnemy(width * eX, 64, floor(frameCount / 30) % 2);
+
+  drawPlayerPortrait(0, 0);
+  drawEnemyPortrait(width - 80, 0);
+
+  drawPlayerHealth();
+  drawEnemyHealth();
 }
 
 function onGameplayClick() {
-    console.log("click");
     for(let i = 0; i < 4; i++) {
       if (mouseX > BUTTON_LAYOUT[i].x1 && mouseX < BUTTON_LAYOUT[i].x1 + BUTTON_LAYOUT[i].x2 &&
         mouseY > BUTTON_LAYOUT[i].y1 && mouseY < BUTTON_LAYOUT[i].y1 + BUTTON_LAYOUT[i].y2) {
           currentAnswer = i;
-          stateMachine.Goto("result");
+          states.Goto("result");
       }
     }
 }

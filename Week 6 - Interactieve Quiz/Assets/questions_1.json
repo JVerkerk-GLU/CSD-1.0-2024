@@ -9,7 +9,7 @@
             "Barbarian",
             "Rogue"
         ],
-        "correct": 2
+        "correct": 1
     },
     {
         "question": "In what year did Dungeons & Dragons get acquired by Wizards of the Coast?",
@@ -19,7 +19,7 @@
             "1997",
             "2000"
         ],
-        "correct": 3
+        "correct": 2
     },
     {
         "question": "Which of these cities is not part of the Faerûn?",
@@ -29,7 +29,7 @@
             "Thultanthar",
             "Sigil"
         ],
-        "correct": 4
+        "correct": 3
     },
     {
         "question": "What was the first fictional setting for Dungeons & Dragons?",
@@ -39,7 +39,7 @@
             "Greyhawk",
             "Blackmoor"
         ],
-        "correct": 4
+        "correct": 3
     },
     {
         "question": "In the Forgotten Realms, which of these creatures would be seen as the Handmaidens of Lolth?",
@@ -49,7 +49,7 @@
             "Drider",
             "Succubi"
         ],
-        "correct": 2
+        "correct": 1
     },
     {
         "question": "Which of these deities was destroyed by Helm during the time of Troubles?",
@@ -59,7 +59,7 @@
             "Mask",
             "Mystra"
         ],
-        "correct": 4
+        "correct": 3
     },
     {
         "question": "What school of magic is the 5th level spell Creation?",
@@ -69,7 +69,7 @@
             "Transmutation",
             "Abjuration"
         ],
-        "correct": 1
+        "correct": 0
     },
     {
         "question": "In Vecna Lives, who of these mages was killed?",
@@ -79,7 +79,7 @@
             "Leomund",
             "Tasha"
         ],
-        "correct": 1
+        "correct": 0
     },
     {
         "question": "In 5th edition, how many attacks can a 20th level fighter make while they use 2 weapons, are hasted and use action surge.",
@@ -89,7 +89,7 @@
             "11",
             "12"
         ],
-        "correct": 2
+        "correct": 1
     },
     {
         "question": "In the Dungeons & Dragons movie, the heroes must run from a dragon, what is the name of this dragon?",
@@ -99,7 +99,7 @@
             "Razorfang",
             "Arngalor"
         ],
-        "correct": 1
+        "correct": 0
     }
 ]
 }

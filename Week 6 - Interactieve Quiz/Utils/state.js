@@ -37,7 +37,7 @@ function state(drawFn, clickFn) {
 
     this.Draw = function() {
         if (this.draw_fn)
-            this.draw_fn();
+            this.draw_fn(this.initialized);
         this.initialized = true;
     }
 
