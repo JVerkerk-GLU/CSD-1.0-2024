@@ -1,9 +1,10 @@
 function onGameplay() {
   fill(255);
-  nineSlice(panel_question, 24, 240, 752, 158, 48);
+  nineSlice(panel_question, 24, 210, 752, 158, 48);
   fill(0);
   textStyle(BOLD);
-  text(questions[currentQuestion].question, 24, 240, 752, 158);
+  textFont("Cinzel");
+  text(questions[currentQuestion].question, 24, 210, 752, 158);
 
   for (let i = 0; i < 4; i++) {
     fill(255);

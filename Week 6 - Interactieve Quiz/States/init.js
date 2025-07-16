@@ -8,7 +8,7 @@ function onInit() {
 
         currentQuestion = -1;
         questions = 0;
-        questions = shuffle(question_table.get(level));
+        questions = shuffle(question_table.get(level).questions);
         states.Goto("start");
     }
 }

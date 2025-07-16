@@ -9,8 +9,6 @@ function onLevelUp(initialized) {
     let player = () => drawPlayer(width * pX, 64, floor(frameCount / 30) % 2);
     let enemy = () => {};
 
-
-
     if (levelUpProgress < 0.5)
     {
         enemy = () => 
