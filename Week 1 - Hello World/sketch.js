@@ -1,12 +1,28 @@
+const fractalPoints =
+[
+  { x: 300, y: 450 },
+  { x: 150, y: 700 },
+  { x: 450, y: 700 }
+]
+let lastPoint = {
+  x: 300,
+  y: 575,
+}
+
 function setup() {
-  createCanvas(600, 400);
+  createCanvas(600, 800);
   textSize(16);
   textAlign(LEFT, TOP);
   ellipseMode(RADIUS);
+
+  background(196);
 }
 
 function draw() {
-  background(196);
+  background('rgba(255, 255, 255, 0.01)');
+  fill(196);
+  noStroke();
+  rect(0, 0, 600, 400);
 
   //#region 1. Name
   fill(0);
@@ -294,4 +310,14 @@ function draw() {
     fill(128, 128, 255);
     rect(468, 292, 8, 16);
     //#endregion
+
+    const corner = random(fractalPoints);
+    lastPoint = {
+      x: lerp(lastPoint.x, corner.x, 0.5),
+      y: lerp(lastPoint.y, corner.y, 0.5)
+    };
+
+    stroke(0)
+    strokeWeight(2);
+    point(lastPoint.x, lastPoint.y);
 }
