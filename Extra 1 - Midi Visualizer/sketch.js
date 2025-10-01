@@ -69,7 +69,19 @@ function togglePlayback(song) {
     resetMIDI();
     currentSong = song;
     if (songs[song] && songs[song].file) {
-      synth.load(songs[song].file);
+      synth.load(songs[song].file)
+        .then(() => {
+          console.log(`Successfully loaded: ${song}. Starting playback.`);
+          if (!synth.isPlaying) {
+            synth.play();
+          }
+        })
+        .catch(error => {
+          console.error(`Failed to load file for: ${song}`, error);
+          currentSong = null;
+        });
+        
+      return;
     } else {
       console.error(`File data missing for: ${song}`);
       return;

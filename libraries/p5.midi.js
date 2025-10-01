@@ -45,6 +45,65 @@
 
   // 4. DEFINE PUBLIC API FUNCTIONS (Executed after all dependencies are present)
   function defineAPI() {
+    const GM_INSTRUMENTS_BASE_URL = "https://gleitz.github.io/midi-js-soundfonts/FluidR3_GM/";
+    const INSTRUMENT_TABLE = ["acoustic_grand_piano", "bright_acoustic_piano", "electric_grand_piano", "honkytonk_piano", "electric_piano_1", "electric_piano_2", "harpsichord", "clavinet", "celesta", "glockenspiel", "music_box", "vibraphone", "marimba", "xylophone", "tubular_bells", "dulcimer", "drawbar_organ", "percussive_organ", "rock_organ", "church_organ", "reed_organ", "accordion", "harmonica", "tango_accordion", "acoustic_guitar_nylon", "acoustic_guitar_steel", "electric_guitar_jazz", "electric_guitar_clean", "electric_guitar_muted", "overdriven_guitar", "distortion_guitar", "guitar_harmonics", "acoustic_bass", "electric_bass_finger", "electric_bass_pick", "fretless_bass", "slap_bass_1", "slap_bass_2", "synth_bass_1", "synth_bass_2", "violin", "viola", "cello", "contrabass", "tremolo_strings", "pizzicato_strings", "orchestral_harp", "timpani", "string_ensemble_1", "string_ensemble_2", "synth_strings_1", "synth_strings_2", "choir_aahs", "voice_oohs", "synth_choir", "orchestra_hit", "trumpet", "trombone", "tuba", "muted_trumpet", "french_horn", "brass_section", "synth_brass_1", "synth_brass_2", "soprano_sax", "alto_sax", "tenor_sax", "baritone_sax", "oboe", "english_horn", "bassoon", "clarinet", "piccolo", "flute", "recorder", "pan_flute", "blown_bottle", "shakuhachi", "whistle", "ocarina", "lead_1_square", "lead_2_sawtooth", "lead_3_calliope", "lead_4_chiff", "lead_5_charang", "lead_6_voice", "lead_7_fifths", "lead_8_bass__lead", "pad_1_new_age", "pad_2_warm", "pad_3_polysynth", "pad_4_choir", "pad_5_bowed", "pad_6_metallic", "pad_7_halo", "pad_8_sweep", "fx_1_rain", "fx_2_soundtrack", "fx_3_crystal", "fx_4_atmosphere", "fx_5_brightness", "fx_6_goblins", "fx_7_echoes", "fx_8_scifi", "sitar", "banjo", "shamisen", "koto", "kalimba", "bagpipe", "fiddle", "shanai", "tinkle_bell", "agogo", "steel_drums", "woodblock", "taiko_drum", "melodic_tom", "synth_drum", "reverse_cymbal", "guitar_fret_noise", "breath_noise", "seashore", "bird_tweet", "telephone_ring", "helicopter", "applause", "gunshot"];
+    const NOTE_SAMPLES = {
+  // --- Natural Notes (Mapped to their own file) ---
+  
+  // OCTAVE 1
+  'C1': 'C1.mp3', 'D1': 'D1.mp3', 'E1': 'E1.mp3', 'F1': 'F1.mp3', 
+  'G1': 'G1.mp3', 'A1': 'A1.mp3', 'B1': 'B1.mp3',
+  
+  // OCTAVE 2
+  'C2': 'C2.mp3', 'D2': 'D2.mp3', 'E2': 'E2.mp3', 'F2': 'F2.mp3', 
+  'G2': 'G2.mp3', 'A2': 'A2.mp3', 'B2': 'B2.mp3',
+  
+  // OCTAVE 3
+  'C3': 'C3.mp3', 'D3': 'D3.mp3', 'E3': 'E3.mp3', 'F3': 'F3.mp3', 
+  'G3': 'G3.mp3', 'A3': 'A3.mp3', 'B3': 'B3.mp3',
+  
+  // OCTAVE 4 (Middle C)
+  'C4': 'C4.mp3', 'D4': 'D4.mp3', 'E4': 'E4.mp3', 'F4': 'F4.mp3', 
+  'G4': 'G4.mp3', 'A4': 'A4.mp3', 'B4': 'B4.mp3',
+  
+  // OCTAVE 5
+  'C5': 'C5.mp3', 'D5': 'D5.mp3', 'E5': 'E5.mp3', 'F5': 'F5.mp3', 
+  'G5': 'G5.mp3', 'A5': 'A5.mp3', 'B5': 'B5.mp3',
+  
+  // OCTAVE 6
+  'C6': 'C6.mp3', 'D6': 'D6.mp3', 'E6': 'E6.mp3', 'F6': 'F6.mp3', 
+  'G6': 'G6.mp3', 'A6': 'A6.mp3', 'B6': 'B6.mp3',
+  
+  // OCTAVE 7
+  'C7': 'C7.mp3', 'D7': 'D7.mp3', 'E7': 'E7.mp3', 'F7': 'F7.mp3', 
+  'G7': 'G7.mp3', 'A7': 'A7.mp3', 'B7': 'B7.mp3',
+
+  
+  // --- Chromatic Notes (Mapped to Flat equivalent file names) ---
+
+  // C# -> Db
+  'C#1': 'Db1.mp3', 'C#2': 'Db2.mp3', 'C#3': 'Db3.mp3', 'C#4': 'Db4.mp3', 
+  'C#5': 'Db5.mp3', 'C#6': 'Db6.mp3', 'C#7': 'Db7.mp3',
+
+  // D# -> Eb
+  'D#1': 'Eb1.mp3', 'D#2': 'Eb2.mp3', 'D#3': 'Eb3.mp3', 'D#4': 'Eb4.mp3', 
+  'D#5': 'Eb5.mp3', 'D#6': 'Eb6.mp3', 'D#7': 'Eb7.mp3',
+
+  // F# -> Gb
+  'F#1': 'Gb1.mp3', 'F#2': 'Gb2.mp3', 'F#3': 'Gb3.mp3', 'F#4': 'Gb4.mp3', 
+  'F#5': 'Gb5.mp3', 'F#6': 'Gb6.mp3', 'F#7': 'Gb7.mp3',
+
+  // G# -> Ab
+  'G#1': 'Ab1.mp3', 'G#2': 'Ab2.mp3', 'G#3': 'Ab3.mp3', 'G#4': 'Ab4.mp3', 
+  'G#5': 'Ab5.mp3', 'G#6': 'Ab6.mp3', 'G#7': 'Ab7.mp3',
+
+  // A# -> Bb
+  'A#1': 'Bb1.mp3', 'A#2': 'Bb2.mp3', 'A#3': 'Bb3.mp3', 'A#4': 'Bb4.mp3', 
+  'A#5': 'Bb5.mp3', 'A#6': 'Bb6.mp3', 'A#7': 'Bb7.mp3',
+};
+
+
+    let instrumentCache = {};
 
     //#region --- Utilities ---
 
@@ -80,6 +139,24 @@
     window.loadMidiAsync = async function (path) {
       try {
         const midiData = await Midi.fromUrl(path);
+        const promises = midiData.tracks.forEach(async (track) => {
+          const iName = track.channel != 9 ?
+              INSTRUMENT_TABLE[track.instrument?.number] : undefined;
+
+          if (iName && !(iName in instrumentCache)) {
+            const iSampler = new Tone.Sampler({
+              urls: NOTE_SAMPLES,
+              baseUrl: GM_INSTRUMENTS_BASE_URL + iName + "-mp3/",
+            }).toDestination();
+
+            instrumentCache[iName] = iSampler;
+            await iSampler.loaded;
+          }
+        });
+
+        if (promises)
+          await Promise.all(promises);
+
         return midiData;
       } catch (error) {
         console.error(`Failed to load MIDI file at ${path}:`, error);
@@ -133,7 +210,7 @@
          * This method is synchronous.
          * @param {object} midi - The fully loaded Midi object (resolved from Midi.fromUrl).
          */
-        load(midi) {
+        async load(midi) {
           this.stop();
           this._dispose();
 
@@ -148,10 +225,12 @@
             return;
           }
 
+          const promises = [];
+
           midi.tracks.forEach((track) => {
-            const synth = new Tone.PolySynth(Tone.Synth, {
-              envelope: { attack: 0.02, decay: 0.1, sustain: 0.3, release: 1 },
-            }).toDestination();
+            const iName = track.channel != 9 && track.instrument?.number != 0 ?
+              INSTRUMENT_TABLE[track.instrument?.number] : undefined;
+            const synth = this._createSynth(iName);
             this.synths.push(synth);
 
             const partEvents = track.notes.map((note) => ({
@@ -160,6 +239,7 @@
               midi: note.midi,
               duration: note.duration,
               velocity: note.velocity,
+              instrument: iName
             }));
 
             const part = new Tone.Part((time, value) => {
@@ -191,6 +271,18 @@
             part.start(0);
             this.parts.push(part);
           });
+
+          await Promise.all(promises);
+        },
+
+        _createSynth(instrumentName) {
+          if (instrumentName && instrumentName in instrumentCache) {
+            return instrumentCache[instrumentName];
+          } else {
+            return new Tone.PolySynth(Tone.Synth, {
+              envelope: { attack: 0.02, decay: 0.1, sustain: 0.3, release: 1 },
+            }).toDestination();
+          }
         },
 
         //#endregion
