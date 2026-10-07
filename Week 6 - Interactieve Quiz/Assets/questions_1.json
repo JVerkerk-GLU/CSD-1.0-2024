@@ -1,6 +1,7 @@
 {
     "level": 1,
     "enemy": "Chicken",
+    "health": 8,
     "questions": [
     {
         "question": "Which of these is NOT a class in Dungeons & Dragons 5th edition?",
@@ -23,7 +24,7 @@
         "correct": 2
     },
     {
-        "question": "Which of these cities is not part of the Faerûn?",
+        "question": "Which of these cities is not part of Faerûn?",
         "answers": [
             "Baldur's Gate",
             "Neverwinter",

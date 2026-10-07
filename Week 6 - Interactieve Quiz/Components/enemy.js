@@ -3,7 +3,7 @@ function drawEnemyPortrait(x, y) {
   fill(0);
   textStyle(BOLD);
   textSize(24)
-  textFont("Roboto");
+  textFont("Merienda");
   text(question_table.get(level).enemy, x - 280, y + 12, 280, 64);
   textStyle(NORMAL);
   textSize(28)
@@ -17,7 +17,7 @@ function drawEnemy(x, y, frame) {
 
 function drawEnemyHealth() {
   fill(255);
-  for (i = 0; i < MAX_ENEMY_HEALTH; i++) {
+  for (i = 0; i < enemyMaxHealth; i++) {
     image(sheet_health, width * (eX + 0.1) + (32 * i), 96 + (i < enemyHealth ? 2 : 0) * sin((frameCount + i * 10) / 5), 32, 32, (i < enemyHealth ? 0 : 32), 0, 32, 32);
   }
 }

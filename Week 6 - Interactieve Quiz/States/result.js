@@ -2,12 +2,29 @@ let resultProgress = 0;
 let wasChanged = false;
 
 function onResult(initialized) {
+    // Logic
     if (!initialized) {
         resultProgress = 0;
         wasChanged = false;
     }
     resultProgress += 1 / frameRate();
-    
+
+    if (!wasChanged && resultProgress > 1.5) {
+        if (currentAnswer == questions[currentQuestion].correct)
+            enemyHealth--;
+        else health--;
+
+        wasChanged = true;
+    }
+
+    if (resultProgress > 1.75) {
+        if (enemyHealth <= 0) 
+            states.Goto("levelUp");
+        if (health <= 0)
+            states.Goto("gameOver");
+    }
+
+    // Visuals
     fill(255);
     nineSlice(panel_question, 24, 210, 752, 158, 48);
     fill(0);
@@ -40,6 +57,7 @@ function onResult(initialized) {
         else 
             enemy = () => drawEnemy(width * eX, 64, 2 + floor((resultProgress - 1) * 2) % 2);
     }
+
     if (resultProgress > 1.5 && resultProgress < 2)
     {
         if (currentAnswer == questions[currentQuestion].correct)
@@ -62,14 +80,6 @@ function onResult(initialized) {
     drawPlayerHealth();
     drawEnemyHealth();
 
-    if (!wasChanged && resultProgress > 1.5) {
-        if (currentAnswer == questions[currentQuestion].correct)
-            enemyHealth--;
-        else health--;
-
-        wasChanged = true;
-    }
-
     if (resultProgress > 3)
-        states.Goto("start");
+        states.Goto("initRound");
 }

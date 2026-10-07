@@ -1,8 +1,8 @@
 // Asset management
 
 // Asset variables
-let bg_dungeon, bg_tiles;
-let panel_answer, panel_answer_border, panel_question, panel_name;
+let bg_dungeon, bg_tiles, bg_menu;
+let panel_answer, panel_answer_border, panel_question, panel_name, panel_divider;
 let sheet_player, sheet_enemy, sheet_portrait, sheet_health;
 
 // Load all game assets
@@ -15,8 +15,10 @@ function preloadAssets() {
   // Load background
   bg_dungeon = loadImage("Assets/Textures/bg_dungeon.png");
   bg_tiles = loadImage("Assets/Textures/bg_tiles.png");
+  bg_menu = loadImage("Assets/Textures/bg_menu.webp");
 
   // Load UI panels
+  panel_divider = loadImage("Assets/Textures/panel_divider.png");
   panel_question = loadImage("Assets/Textures/panel_question.png");
   panel_answer = loadImage("Assets/Textures/panel_answer.png");
   panel_answer_border = loadImage("Assets/Textures/panel_answer_border.png");
@@ -34,6 +36,7 @@ function onLoadQuestions(json) {
   question_table.set(json["level"], 
     { 
       enemy: json["enemy"],
+      health: json["health"],
       questions: json["questions"]
     });
 }

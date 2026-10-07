@@ -15,5 +15,4 @@ const eX = 0.55; // Enemy X position (as percentage of screen width)
 // Game constants
 const MAX_LEVEL = 1;
 const MAX_HEALTH = 3;
-const MAX_ENEMY_HEALTH = 5;
 const MAX_REVEAL_COUNTDOWN = 3;

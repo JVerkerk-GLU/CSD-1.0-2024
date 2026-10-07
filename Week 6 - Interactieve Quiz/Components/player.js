@@ -8,7 +8,7 @@ function drawPlayerPortrait(x, y) {
   fill(0);
   textStyle(BOLD);
   textSize(24)
-  textFont("Roboto");
+  textFont("Merienda");
   text("Henk", x + 80, y + 12, 240, 64);
   textStyle(NORMAL);
   textSize(28)

@@ -1,4 +1,4 @@
-function onStartRound() {
+function onInitRound() {
     currentAnswer = -1;
     currentQuestion++;
     if (currentQuestion >= questions.length) {
